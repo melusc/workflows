@@ -6,12 +6,19 @@ on:
       cprToken:
         required: true
 jobs:
-  setup-node:
-    uses: ./.github/workflows/setup-node.yml
   update:
-    needs: setup-node
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Enable corepack
+        run: corepack enable
+
       - run: |
           yarn set version latest
           git checkout HEAD -- .yarnrc.yml
