@@ -35,5 +35,6 @@ jobs:
           body: Update all NPM dependencies.
           delete-branch: true
           token: ${{ secrets.cprToken }}
+          author: melusc <61409445+melusc@users.noreply.github.com>
           #labels: auto-merge
           #reviewers: # optional
