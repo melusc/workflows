@@ -16,8 +16,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Enable corepack
-        run: corepack enable
+      - run: corepack enable
 
       - run: |
           yarn set version latest
@@ -25,6 +24,8 @@ jobs:
           git clean .yarn/releases -f
 
       - run: yarn up '**'
+
+      - run: yarn dedupe
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
