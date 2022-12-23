@@ -23,6 +23,10 @@ jobs:
           git checkout HEAD -- .yarnrc.yml
           git clean .yarn/releases -f
 
+        # Regenerate yarn.lock
+        # Bring subdependencies up-to-date
+      - run: rm yarn.lock
+
       - run: yarn up '**'
 
       - run: yarn dedupe
