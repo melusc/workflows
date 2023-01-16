@@ -27,9 +27,9 @@ jobs:
         # Bring subdependencies up-to-date
       - run: rm yarn.lock
 
-      - run: yarn up '**'
+      - run: yarn up '**' --mode update-lockfile
 
-      - run: yarn dedupe
+      - run: yarn dedupe --mode update-lockfile
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v4
